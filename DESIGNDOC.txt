@@ -1,0 +1,46 @@
+To run code:
+There are no external dependencies you need to install.
+Simply pull and run 'KPMG_Engineering_Challenge_Blackjack.py' as a python3 program.
+For example in a Windows shell run 'python KPMG_Engineering_Challenge_Blackjack.py'
+
+Rules assumed for blackjack (single player vs. dealer):
+Player goes first.
+Player can see one of dealer's cards.
+If player busts (gets over 21), player automatically loses.
+Face cards are worth 10. Ace can be 1 or 11.
+Player must have higher number to win (tied score is considered a loss).
+Dealer always hits if under 17.
+
+Design choices:
+I used Python 3 because it's a simple language with a lot of built-in functionality,
+so I thought it would be easiest to implement the game in Python.
+
+All the game logic is implemented within a 'BlackJackGame' class to store all the member
+functions and variables. This makes sense because with each game there are associated 
+decks, hands, and scores. Implementing the game within this class also makes it easier to
+add new rules or features associated with the game if I wanted to do so.
+
+Each major part of the game is split into different functions for better overall organization.
+These are all called within the "game()" function which is called to start the game.
+
+The card deck was implemented as a python list and was easily shuffled through "random.shuffle()"
+which is part of Python's "random" library. The 'pop()' function of a Python list was used to
+mimic the real life action of drawing from the top of a deck.
+
+Function definitions were ordered mostly based on order of execution with minor helper functions
+defined at the end.
+
+
+Edge cases:
+While I didn't take the time to write out proper tests, I did keep in mind some edge cases.
+
+One big one was determining what value an ace should take when calculating the total score.
+Aces have to be the last cards to be considered because their value depends on the rest
+of the cards, so when iterating through a hand, instead of adding an ace's value right away,
+I stored the count of the aces and determined what value aces should take after the rest of the
+score was calculated.
+
+Another edge case was user input for choices. Instead of giving different specific input choices
+for each choice, the last option was always "enter any other key". This ensured there would be no
+error if a user entered an input that was not in the given options.
+
